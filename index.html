@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Project TodoMVC</title>
+
+    <link rel="stylesheet" href="css/index.css">
+
+</head>
+
+<body>
+    <section class="app" id="toDoapps">
+        <header>
+            <h1>todos</h1>
+            <!-- Text input done from here and focus moved directly here when refreshing page -->
+            <input class="createTodo" placeholder="What needs to be done?" @keyup.enter="addTodo">
+        </header>
+        <!-- Vue template set up for script usage for render a block
+				This is a conditonal render for a block, wich only is rendered if true-->
+        <template v-if="toDo.length">
+			<div class="container">
+				<section class="core">
+					<!-- Using v-model to create two-way data bindings on input, automatically picks the correct way to update elements-->
+					<input id="selectAll" @click="selectAllFromHTML" type="checkbox"
+						v-model="toggleAllStat.length ===0">
+					<label for="selectAll">Mark all</label>
+
+					<!-- Unordered list where all the todos are presented-->
+					<ul id="items">
+						<!--Using v-for directive to render an array list-->
+						<li v-for="(item,index) in toDoFilter"
+							:class="{completed : item.checkstate,revise:item === modifyCondition}">
+							<div class="view">
+								<!-- Reading states for complete, edit txt, and trash-->
+								<!-- Toggle complete button state-->
+								<input class="toggle" type="checkbox" v-model="item.checkstate">
+								<!-- Double click goes to edit state-->
+								<label @dblclick="modifyCondition = item">{{item.toDoText}}</label>
+								<!-- Clicking the destroy botton state-->
+								<button class="trash" @click="removeItem(index)"></button>
+							</div>
+							<!-- Bidnings for editing todos-->
+							<input class="modify" v-model="item.toDoText" @keyup.enter="modifyCondition = null">
+						</li>
+					</ul>
+				</section>
+
+			</div>
+			<footer class="footerButtons">
+				<!-- vue method called for checking items left to do -->
+
+				<!-- ToDo filtes arranged in an unordered list-->
+				<ul id="filters">
+					<!-- writing items with Vue on the footer.ere sets the filtermode-->
+					<li>
+						<span class="counter">{{itemleft}} item left.</span>
+					</li>
+
+					<li>
+						<a :class="{selected:viewMode===''}" href="#/">All</a>
+					</li>
+
+					<li>
+						<a :class="{selected:viewMode==='active'}" href="#/active">Active</a>
+					</li>
+
+					<li>
+						<a :class="{selected:viewMode==='completed'}" href="#/completed">Completed</a>
+					</li>
+					<li><button class="cleanUp" @click="removeALLDone">Clear completed</button>
+					</li>
+				</ul>
+				<!-- Trigger for removing all done todo's-->
+
+			</footer>
+		</template>
+    </section>
+    <footer class="footerInfo">
+        <p>Double-click to edit a todo</p>
+        <p>By <a href="http://example.com">Sophia Hjörnhede and Magnus Hjörnhede</a></p>
+
+    </footer>
+
+    <script src="js/vue.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

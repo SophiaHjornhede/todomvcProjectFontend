@@ -1,0 +1,267 @@
+body {
+    font: 15px sans-serif;
+    line-height: 1.4em;
+    background: #f5f5f5;
+    color: #111111;
+    min-width: 235px;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+button {
+    background: none;
+    padding: 0;
+    border: 0;
+}
+
+.app {
+    background: white;
+    margin: 120px 0 30px 0;
+    position: relative;
+}
+
+/* inspiration/referens från todomvc*/
+.app h1 {
+    top: -150px;
+    width: 100%;
+    font-size: 90px;
+    font-weight: 200;
+    position: absolute;
+    text-align: center;
+    color: rgba(148, 57, 57, 0.377);
+}
+
+.createTodo {
+    padding: 20px 50px 15px 9%;
+    border: none;
+    max-width: 80%;
+    font-size: 24px;
+    text-align: left;
+    margin-right: autos;
+    outline: none !important;
+}
+
+.core {
+    position: relative;
+    border-top: 1px solid #e6e6e6;
+}
+
+#selectAll {
+    width: 0px;
+}
+
+#selectAll+label {
+    font-size: 0;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: -42px;
+    left: -10px;
+}
+
+#selectAll+label:before {
+    content: 'V';
+    font-size: 24px;
+    color: #e4e1e1;
+    padding: 10px 27px 10px 27px;
+    transition: 1s;
+}
+
+#selectAll:checked+label:before {
+    color: #ca8d8d;
+    transition: 1s;
+}
+
+#items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#items li {
+    position: relative;
+    font-size: 25px;
+}
+
+#items li.revise .modify {
+    display: grid;
+    width: 80%;
+    margin: auto;
+    outline: none !important;
+    border: 1px solid rgba(148, 57, 57, 0.377);
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1), 0 8px 0 -3px #f6f6f6, 0 10px 1px -3px rgba(0, 0, 0, 0.1)
+}
+
+.modify {
+    display: none;
+    position: relative;
+    width: 100%;
+    font-size: inherit;
+}
+
+li.revise .view {
+    display: none;
+}
+
+#items li .toggle {
+    display: block;
+    width: 45px;
+    height: 50px;
+    position: absolute;
+    margin: 7px 2px 2px 2px;
+    cursor: pointer;
+}
+
+#items li .toggle {
+    opacity: 0;
+}
+
+#items li .toggle+label {
+    background-image: url(circle.png);
+    background-size: 40px;
+    background-repeat: no-repeat;
+    background-position: center left;
+    background-position: 4px;
+}
+
+#items li .toggle:checked+label {
+    background-image: url(checked2.png);
+    background-size: 35px;
+    background-position: 7px;
+}
+
+#items li label {
+    padding: 10px 10px 20px 60px;
+    display: grid;
+}
+
+li.completed label {
+    text-decoration: line-through;
+}
+
+.trash {
+    position: absolute;
+    top: -20px;
+    right: 5px;
+    bottom: -10px;
+    width: 40px;
+    height: 40px;
+    margin: auto 0;
+    margin-bottom: 12px;
+    background-image: url(trash2.png);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center left;
+}
+
+.counter {
+    float: left;
+    text-align: left;
+    flex: 3;
+}
+
+#filters,
+.cleanUp {
+    margin: 0;
+    position: absolute;
+    right: 0;
+    left: 0;
+}
+
+#filters li {
+    display: inline;
+}
+
+#filters li a {
+    color: inherit;
+    margin: 3px;
+    padding: 3px 6px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 3px;
+}
+
+#filters li a.selected {
+    border-color: rgba(175, 47, 47, 0.3);
+}
+
+.cleanUp,
+.cleanUp:active {
+    flex: 1;
+    font: bold;
+    font-size: 15px;
+    position: relative;
+    float: right;
+    cursor: pointer;
+    text-align: right;
+    width: auto;
+    padding-right: 5%;
+}
+
+.cleanUp:hover {
+    text-decoration: underline;
+}
+
+.footerInfo {
+    margin: 65px auto 0;
+    color: #464343;
+    font-size: 13px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+
+.footerButtons::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 1;
+    left: 0;
+    height: 50px;
+    z-index: -1;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1), 0 8px 0 -3px #f6f6f6, 0 10px 1px -3px rgba(0, 0, 0, 0.1), 0 16px 0 -6px #f6f6f6, 0 18px 2px -6px rgba(0, 0, 0, 0.1), 0 20px 0 -9px #f6f6f6, 0 22px 2px -9px rgba(0, 0, 0, 0.1);
+}
+
+.footerButtons {
+    display: grid;
+    border-top: 2px solid rgba(148, 57, 57, 0.377);
+    padding: 10px 15px;
+    height: 25px;
+    text-align: center;
+    font-size: 15px;
+}
+
+@media (max-width: 700px) {
+    body {
+        font: 15px sans-serif;
+        line-height: 1.4em;
+        background: #f5f5f5;
+        color: #111111;
+        min-width: 235px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .footerButtons:before {
+        content: '';
+        position: absolute;
+        bottom: auto;
+        height: auto;
+        box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1), 0 8px 0 -3px #f6f6f6, 0 10px 1px -3px rgba(0, 0, 0, 0.1), 0 16px 0 -6px #f6f6f6, 0 18px 2px -6px rgba(0, 0, 0, 0.1), 0 20px 0 -9px #f6f6f6, 0 22px 2px -9px rgba(0, 0, 0, 0.1);
+    }
+    .footerButtons {
+        padding: 10px 15px;
+        height: 10ex;
+        text-align: center;
+        font-size: 15px;
+    }
+    .cleanUp,
+    .cleanUp:active {
+        float: right;
+        position: relative;
+        line-height: 20px;
+        text-decoration: none;
+        cursor: pointer;
+        text-align: right;
+        width: auto;
+        padding-right: 5%;
+    }
+}
